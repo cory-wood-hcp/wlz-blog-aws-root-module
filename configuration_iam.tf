@@ -1,6 +1,6 @@
 module "iam_configuration_workspace" {
   source                       = "./modules/tf_workspace"
-  workspace_name               = "avm-iam-configuration-${local.account_name}"
+  workspace_name               = "wlz-iam-configuration-${local.account_name}"
   github_repository_identifier = "cory-wood-hcp/wlz-blog-configuration-iam"
   project_name                 = lookup(local.project_name, var.organizational_unit)
   workspace_variables = {

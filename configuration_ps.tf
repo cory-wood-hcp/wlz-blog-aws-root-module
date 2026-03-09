@@ -1,6 +1,6 @@
 module "platform_services_configuration_workspace" {
   source                       = "./modules/tf_workspace"
-  workspace_name               = "avm-ps-configuration-${local.account_name}"
+  workspace_name               = "wlz-ps-configuration-${local.account_name}"
   github_repository_identifier = "cory-wood-hcp/wlz-blog-configuration-platform-services"
   project_name                 = lookup(local.project_name, var.organizational_unit)
   workspace_variables = {
