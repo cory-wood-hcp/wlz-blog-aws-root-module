@@ -23,7 +23,7 @@ module "iam_configuration_workspace" {
 resource "tfe_workspace_variable_set" "iam_aws_access" {
   variable_set_id = "varset-RLGAkLpHqwMkg6fd"
   workspace_id    = module.iam_configuration_workspace.tfe_workspace_id
-  depends_on = [module.platform_services_configuration_workspace]
+  depends_on = [module.iam_configuration_workspace]
 }
 
 resource "tfe_workspace_run" "iam_ws_run" {
