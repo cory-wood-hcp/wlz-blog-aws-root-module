@@ -24,6 +24,18 @@ module "platform_services_configuration_workspace" {
       category    = "terraform"
       description = "Enabled regions for the account"
     }
+    TFC_AWS_PROVIDER_AUTH = {
+      key         = "TFC_AWS_PROVIDER_AUTH"
+      value       = "true"
+      category    = "env"
+      description = "Enables Terraform Cloud to authenticate to AWS using the provided role ARN"
+    }
+    TFC_DEFAULT_AWS_RUN_ROLE_ARN = {
+      key         = "TFC_DEFAULT_AWS_RUN_ROLE_ARN"
+      value       = "arn:aws:iam::${module.account_creation.account_id}:role/PlatformServicesTerraformRole"
+      category    = "env"
+      description = "ARN of the role that Terraform Cloud will assume to access AWS for iam configuration"
+    }
   }
   depends_on = [tfe_workspace_run.iam_ws_run]
 }
