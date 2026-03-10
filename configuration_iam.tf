@@ -10,18 +10,20 @@ module "iam_configuration_workspace" {
       category    = "terraform"
       description = "ID of account being configured"
     }
-    aws_account_name = {
-      key         = "aws_account_name"
-      value       = local.account_name
-      category    = "terraform"
-      description = "Name of account being configured"
-    }
+    # aws_account_name = {
+    #   key         = "aws_account_name"
+    #   value       = local.account_name
+    #   category    = "terraform"
+    #   description = "Name of account being configured"
+    # }
   }
+  depends_on = [module.account_creation]
 }
 
 resource "tfe_workspace_variable_set" "iam_aws_access" {
   variable_set_id = "varset-RLGAkLpHqwMkg6fd"
   workspace_id    = module.iam_configuration_workspace.tfe_workspace_id
+  depends_on = [module.platform_services_configuration_workspace]
 }
 
 resource "tfe_workspace_run" "iam_ws_run" {
@@ -40,5 +42,5 @@ resource "tfe_workspace_run" "iam_ws_run" {
     retry_attempts    = 3
     retry_backoff_min = 10
   }
-  depends_on = [tfe_workspace_variable_set.iam_aws_access]
+  depends_on = [tfe_workspace_variable_set.iam_aws_access, module.iam_configuration_workspace]
 }

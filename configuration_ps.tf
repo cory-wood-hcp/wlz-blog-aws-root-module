@@ -37,7 +37,7 @@ module "platform_services_configuration_workspace" {
       description = "ARN of the role that Terraform Cloud will assume to access AWS for iam configuration"
     }
   }
-  depends_on = [tfe_workspace_run.iam_ws_run]
+  depends_on = [tfe_workspace_run.iam_ws_run, module.account_creation]
 }
 
 resource "tfe_workspace_run" "platform_services_ws_run" {
@@ -56,4 +56,5 @@ resource "tfe_workspace_run" "platform_services_ws_run" {
     retry_attempts    = 3
     retry_backoff_min = 10
   }
+  depends_on = [module.platform_services_configuration_workspace,module.platform_services_configuration_workspace]
 }

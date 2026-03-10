@@ -15,6 +15,10 @@ resource "aws_organizations_account" "new_account" {
       actions = [action.aws_lambda_invoke.remove_account_vpcs]
     }
   }
+  timeouts {
+    create = "15m"
+    delete = "15m"
+  }
 }
 
 ####################
@@ -32,6 +36,10 @@ resource "aws_ssoadmin_account_assignment" "admins" {
 
   target_id   = aws_organizations_account.new_account.id
   target_type = "AWS_ACCOUNT"
+  timeouts {
+    create = "15m"
+    delete = "15m"
+  }
 }
 
 ######################################

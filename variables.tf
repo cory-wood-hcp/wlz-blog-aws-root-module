@@ -18,31 +18,6 @@ variable "enabled_regions" {
     type        = list(string)
 }
 
-# variable "enable_us_east_1" {
-#   description = "Enable generation for us-east-1 region"
-#   type        = bool
-# }
-#
-# variable "enable_us_east_2" {
-#   description = "Enable generation for us-east-2 region"
-#   type        = bool
-# }
-#
-# variable "enable_us_west_2" {
-#   description = "Enable generation for us-west-2 region"
-#   type        = bool
-# }
-#
-# variable "enable_ap_south_1" {
-#   description = "Enable generation for ap-south-1 region"
-#   type        = bool
-# }
-#
-# variable "enable_ap_southeast_1" {
-#   description = "Enable generation for ap-southeast-1 region"
-#   type        = bool
-# }
-
 
 variable "organizational_unit" {
   description = "The organizational unit for which to generate the file"
